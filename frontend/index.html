@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="cadastroFuncionario" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Funcionario</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-messages.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/cadastroFuncionarioCtrl.js"></script>
+    <script>       
+    </script>
+</head>
+
+<body ng-controller="cadastroFuncionarioCtrl">
+    <div class="jumbotron">
+        <h3>{{app}}</h3>
+        <br>
+        <form name="funcionarioForm">
+            <input class="form-control" type="text" ng-model="funcionario.nome" name="nome" placeholder="Nome"
+                ng-required="true" />
+            <input class="form-control" type="text" ng-model="funcionario.telefone" name="telefone"
+                placeholder="Telefone" ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/" />
+            <input class="form-control" type="text" ng-model="funcionario.idade" name="idade" placeholder="Idade"
+                ng-required="true" />
+        </form>
+        <div ng-show="funcionarioForm.nome.$invalid && funcionarioForm.nome.$dirty" class="alert alert-danger">
+            Por favor, preencha o nome!
+        </div>
+        <div ng-show="funcionarioForm.telefone.$error.required && funcionarioForm.telefone.$diry"
+            class="alert alert-danger">
+            Por favor, preencha o telefone!
+        </div>
+        <div ng-show="funcionarioForm.telefone.$error.pattern" class="alert alert-danger">
+            O campo telefone deve ter o formato DDDDD-DDDD.
+        </div>
+        <div ng-show="funcionarioForm.idade.$invalid && funcionarioForm.idade.$diry" class="alert alert-danger">
+            Por favor, preencha o idade!
+        </div>
+        <button class="btn btn-primary btn-block" ng-click="cadastrarFuncionario(funcionario)"
+            ng-disabled="funcionarioForm.$invalid">Cadastrar
+            Funcionario</button>
+    </div>
+</body>
+
+</html>

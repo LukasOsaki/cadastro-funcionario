@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="cadastroFuncionario" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Funcionario</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-messages.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/cadastroFuncionarioCtrl.js"></script>
+    <script>       
+    </script>
+</head>
+
+<body ng-controller="cadastroFuncionarioCtrl">
+    <div class="jumbotron">
+        <h3>Lista de Funcionarios</h3>
+        <input class="form-control" type="text" ng-model="busca" placeholder="O que você está buscando?" />
+        <table class="table">
+            <tr>
+                
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Idade</th>
+            </tr>
+            <tr ng-repeat="funcionario in funcionarios | filter:busca | orderBy: 'nome'">
+                <td>{{funcionario.nome}}</td>
+                <td>{{funcionario.telefone}}</td>
+                <td>{{funcionario.idade}}</td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+</body>
+
+</html>
